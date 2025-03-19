@@ -34,13 +34,13 @@ export default function HeroSection() {
                 <motion.p variants={itemVariants} className="text-gray-300 mb-8 max-w-lg">
                     Eu crio experiências web bonitas, interativas e de alto desempenho usando as tecnologias mais recentes e as melhores práticas.
                 </motion.p>
-                <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-                    <a className="px-6 py-3 rounded border border-[#00FFFF] text-[#00FFFF] hover:bg-[#00FFFF]/10 transition-all duration-300 font-['Space_Grotesk']" style={{ boxShadow: 'rgba(0, 255, 255, 0.5) 0px 0px 5px, rgba(0, 255, 255, 0.3) 0px 0px 20px' }} >Meu trabalho</a>
-                    <a className="px-6 py-3 rounded bg-[#9333EA] text-white hover:bg-[#9333EA]/80 transition-all duration-300 font-['Space_Grotesk']">Contate-me</a>
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-4 relative z-20">
+                    <a className="cursor-pointer px-6 py-3 rounded border border-[#00FFFF] text-[#00FFFF] hover:bg-[#00FFFF]/10 transition-all duration-300 font-['Space_Grotesk']" style={{ boxShadow: 'rgba(0, 255, 255, 0.5) 0px 0px 5px, rgba(0, 255, 255, 0.3) 0px 0px 20px' }} >Meu trabalho</a>
+                    <a className="cursor-pointer px-6 py-3 rounded bg-[#9333EA] text-white hover:bg-[#9333EA]/80 transition-all duration-300 font-['Space_Grotesk']">Contate-me</a>
                 </motion.div>
-                <motion.div variants={itemVariants} className="flex space-x-4 mt-8">
-                    <a href="#" className="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300" aria-label="GitHub">
-                        <FontAwesomeIcon icon={faGithub} className="text-xl" />
+                <motion.div variants={itemVariants} className="flex space-x-4 mt-8 relative">
+                    <a href="https://github.com/Tenshiiz" className="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300" aria-label="GitHub">
+                        <FontAwesomeIcon icon={faGithub} className=" text-xl" />
                     </a>
                     <a href="#" className="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300" aria-label="LinkedIn">
                         <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
