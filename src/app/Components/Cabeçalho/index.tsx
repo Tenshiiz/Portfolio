@@ -34,7 +34,7 @@ function Cabeçalho() {
 
     return (
         <header
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#030610] shadow-lg" : "bg-transparent"}`}>
+            className={`fixed top-0 left-0 w-full z-50 transition-all bg-[#050816] duration-300 ${scrolled ? "bg-[#050816]/80 backdrop-blur-lg shadow-md border-b border-[#00FFFF]/20" : "border-b border-transparent"}`}>
             <div className="px-7 py-3 flex justify-between items-center">
                 <a className={`ml-2 text-2xl ${orbitron.className} font-bold text-[#00FFFF]`} style={{ textShadow: "rgba(0, 255, 255, 0.7) 0px 0px 10px" }}>
                     C

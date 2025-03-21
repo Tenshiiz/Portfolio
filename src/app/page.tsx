@@ -1,16 +1,19 @@
 "use client";
 
+import About from "./Components/About";
 import Cabeçalho from "./Components/Cabeçalho";
 import Hero from "./Components/Hero";
+import Skills from "./Components/Skills";
 
 
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050816] text-white px-4 py-3 md:p-7 md:py-3">
+    <div className="min-h-screen bg-[#050816] text-white">
       <Cabeçalho />
       <Hero />
-      
+      <About />
+      <Skills />
     </div>
   );
 }
