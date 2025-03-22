@@ -1,4 +1,5 @@
 
+
 import { faCode, faPalette, faTools } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
@@ -96,6 +97,7 @@ const SkillCategory = ({ title, icon, color, skills }: SkillCategoryProps) => {
                 <div
                     className={`w-12 h-12 rounded-full ${colorStyles[color].bg} flex items-center justify-center ${colorStyles[color].text} mr-4 group-hover:${colorStyles[color].shadow} transition-all duration-300`}
                 >
+                    {/* @ts-expect-error: FontAwesomeIcon expects a string literal for icon */}
                     <FontAwesomeIcon icon={icon} />
                 </div>
                 <h3 className="text-xl font-['Space_Grotesk']">{title}</h3>
@@ -195,9 +197,11 @@ export default function SkillsSection() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {skillCategories.map((category, index) => (
+                        
                         <SkillCategory
                             key={index}
                             title={category.title}
+                            // @ts-expect-error : mt bugado
                             icon={category.icon}
                             color={category.color}
                             skills={category.skills}
