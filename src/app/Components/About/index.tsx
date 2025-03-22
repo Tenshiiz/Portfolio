@@ -33,7 +33,7 @@ function About() {
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity : hasScrolled ? 1 : 0, x : hasScrolled ? [100, 0] : [100] }} transition={{ duration: 1 }} className="max-w-sm md:max-w-xs lg:max-w-1/2">
                 <h2 className="text-3xl font-bold mb-2 font-['Space_Grotesk']">
-                    Sobre <span className="bg-gradient-to-r from-[#00FFFF] to-[#9333EA] bg-clip-text text-transparent ">Mim</span>
+                    Sobre <span className="bg-gradient-to-r from-[#00FFFF] to-[#9333EA] bg-clip-text text-transparent">Mim</span>
                 </h2>
                 <div className="w-20 h-1 bg-[#00FFFF] mb-6 rounded" style={{ boxShadow: 'rgba(0, 255, 255, 0.5) 0px 0px 5px, rgba(0, 255, 255, 0.3) 0px 0px 20px' }}></div>
                 <div className="space-y-4 text-gray-300">
