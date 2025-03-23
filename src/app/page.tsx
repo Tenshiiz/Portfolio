@@ -11,7 +11,7 @@ import Skills from "./Components/Skills";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050816] text-white">
+    <div id="inicio" className="min-h-screen bg-[#050816] text-white">
       <Cabeçalho />
       <Hero />
       <About />

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
+import React from "react";
 
 interface ProjectProps {
     title: string;
@@ -11,28 +12,28 @@ interface ProjectProps {
     color: "cyan" | "purple" | "pink";
 }
 
-const Project = ({ title, description, imgSrc, tech, demoLink, sourceLink, color }: ProjectProps) => {
-    const colors = {
-        cyan: {
-            border: "border-[#00FFFF]/20 hover:border-[#00FFFF]",
-            text: "text-[#00FFFF]",
-            bg: "bg-[#00FFFF]/30",
-            hover: "group-hover:text-[#00FFFF]"
-        },
-        purple: {
-            border: "border-[#9333EA]/20 hover:border-[#9333EA]",
-            text: "text-[#9333EA]",
-            bg: "bg-[#9333EA]/30",
-            hover: "group-hover:text-[#9333EA]"
-        },
-        pink: {
-            border: "border-[#E879F9]/20 hover:border-[#E879F9]",
-            text: "text-[#E879F9]",
-            bg: "bg-[#E879F9]/30",
-            hover: "group-hover:text-[#E879F9]"
-        }
-    };
+const colors = {
+    cyan: {
+        border: 'border-[#00FFFF]/20 hover:border-[#00FFFF]',
+        text: 'text-[#00FFFF]',
+        bg: 'bg-[#00FFFF]/30',
+        hover: 'group-hover:text-[#00FFFF]'
+    },
+    purple: {
+        border: 'border-[#9333EA]/20 hover:border-[#9333EA]',
+        text: 'text-[#9333EA]',
+        bg: 'bg-[#9333EA]/30',
+        hover: 'group-hover:text-[#9333EA]'
+    },
+    pink: {
+        border: 'border-[#E879F9]/20 hover:border-[#E879F9]',
+        text: 'text-[#E879F9]',
+        bg: 'bg-[#E879F9]/30',
+        hover: 'group-hover:text-[#E879F9]'
+    }
+};
 
+const Project = React.memo(({ title, description, imgSrc, tech, demoLink, sourceLink, color }: ProjectProps) => {
     return (
         <motion.div
             className={`group relative overflow-hidden rounded-lg bg-[#050816] border ${colors[color].border} transition-all duration-500`}
@@ -42,7 +43,7 @@ const Project = ({ title, description, imgSrc, tech, demoLink, sourceLink, color
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
         >
-            <div className={`absolute inset-0 bg-gradient-to-b from-transparent to-${colors[color].bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-b from-transparent to-${colors[color].bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
 
             {/* Project Image */}
             <img
@@ -61,8 +62,7 @@ const Project = ({ title, description, imgSrc, tech, demoLink, sourceLink, color
                     {tech.map((item, index) => (
                         <span
                             key={index}
-                            className="px-2 py-1 bg-[#171717]/50 text-xs rounded"
-                            style={{ color: index % 3 === 0 ? '#00FFFF' : index % 3 === 1 ? '#9333EA' : '#E879F9' }}
+                            className={`px-2 py-1 bg-[#171717]/50 text-xs rounded ${colors[color].text}`}
                         >
                             {item}
                         </span>
@@ -73,56 +73,48 @@ const Project = ({ title, description, imgSrc, tech, demoLink, sourceLink, color
                 <div className="flex justify-between">
                     <a
                         href={demoLink}
-                        className={`${colors[color].text} hover:text-white transition-colors duration-300 text-sm flex items-center gap-2`}
+                        className={`${colors[color].text} hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md`}
                     >
-                        <i className="fas fa-eye"></i> prévia
+                        <i className="fas fa-eye"></i> Ver Demo
                     </a>
                     <a
                         href={sourceLink}
-                        className={`${colors[color].text} hover:text-white transition-colors duration-300 text-sm flex items-center gap-2`}
+                        className={`${colors[color].text} hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md`}
                     >
-                        <i className="fab fa-github"></i> Codigo Fonte
+                        <i className="fab fa-github"></i> Ver Código
                     </a>
                 </div>
             </div>
         </motion.div>
     );
-};
+});
+
+Project.displayName = "Project";
 
 export default function ProjectsSection() {
     const projects: ProjectProps[] = [
         {
-            title: "Painel de E-commerce",
-            description: "Um painel administrativo abrangente para plataformas de e-commerce com análises em tempo real, gestão de inventário e processamento de pedidos.",
-            imgSrc: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            tech: ["React", "TypeScript", "Tailwind CSS"],
-            demoLink: "#",
-            sourceLink: "#",
+            title: "Lumen",
+            description: "Uma ferramenta elegante e intuitiva para designers e desenvolvedores explorarem e manipularem cores na web.",
+            imgSrc: "/imgProjects/LumenLogo.png",
+            tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+            demoLink: "https://lumen-ashy.vercel.app/",
+            sourceLink: "https://github.com/Tenshiiz/Lumen",
             color: "cyan"
         },
         {
-            title: "Aplicativo de Viagem",
-            description: "Um aplicativo interativo de planejamento de viagem com recomendações personalizadas, criação de itinerários e atualizações de clima em tempo real.",
-            imgSrc: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            tech: ["Next.js", "GraphQL", "Styled Components"],
-            demoLink: "#",
-            sourceLink: "#",
+            title: "Clone do Youtube",
+            description: "Projeto clone do YouTube desenvolvido para fins de estudo, com foco em assistir vídeos salvos e demonstrar habilidades em desenvolvimento web.",
+            imgSrc: "/imgProjects/YoutubeClone.png",
+            tech: ["React.js", "CSS"],
+            demoLink: "https://youtube-clone-tenshi.vercel.app",
+            sourceLink: "https://github.com/Tenshiiz/Youtube-clone",
             color: "purple"
         },
-        {
-            title: "Gerador de Conteúdo com IA",
-            description: "Uma plataforma poderosa movida por IA para gerar e editar conteúdo com modelos personalizáveis e opções de exportação.",
-            imgSrc: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            tech: ["React", "Node.js", "OpenAI API"],
-            demoLink: "#",
-            sourceLink: "#",
-            color: "pink"
-        }
     ];
 
-
     return (
-        <section id="projects" className="py-24 bg-[#030610] relative">
+        <section id="projetos" className="py-24 bg-[#030610] relative">
             <div className="container mx-auto px-6">
                 <motion.div
                     className="text-center mb-16"

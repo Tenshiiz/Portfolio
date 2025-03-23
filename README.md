@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 Meu Portfólio
 
-## Getting Started
+![Captura da tela inicial](./imagens/telaInicial.png)
 
-First, run the development server:
+Olá! Bem-vindo ao meu portfólio pessoal. Aqui você encontra uma coleção dos meus projetos em desenvolvimento frontend, onde eu mostro minhas habilidades em criar sites e apps web modernos e funcionais. Prepare-se para uma jornada visual incrível! ✨
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 👨‍💻 Sobre Mim
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Desenvolvedor frontend focado em criar experiências web que funcionam. Trabalho principalmente com React e Next.js, sempre buscando código limpo e interfaces intuitivas. Apaixonado por transformar ideias em realidade digital! 🚀
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tecnologias
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
+- ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white)
 
-## Learn More
+## 📂 Projetos
 
-To learn more about Next.js, take a look at the following resources:
+Este repositório documenta meus projetos em desenvolvimento frontend. Você encontrará desde aplicações completas com autenticação até componentes reutilizáveis e integrações com APIs.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌟 Destaques
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Interfaces Responsivas:** Sites que se adaptam perfeitamente a qualquer dispositivo.
+- **Animações Suaves:** Usando Framer Motion para transições incríveis.
+- **Código Limpo:** Sempre priorizando manutenibilidade e eficiência.
 
-## Deploy on Vercel
+Sinta-se à vontade para explorar e entrar em contato! Vamos conversar sobre ideias e colaborações. 🤝
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📞 Contato
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[LinkedIn](https://www.linkedin.com/in/carloseduardo2003) | [Email](mailto:carlosvanziler50@gmail.com)
+
+Desenvolvido por ❤️ Tenshi

@@ -10,12 +10,12 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], })
 
 function Cabeçalho() {
 
-    const listaMenu = ["ínicio", "Sobre", "Habilidades", "Projetos", "Contato"]
+    const listaMenu = ["Inicio", "Sobre", "Habilidades", "Projetos", "Contato"]
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
-        if (window.scrollY > 50) { // Ajuste esse valor conforme necessário
+        if (window.scrollY > 50) {
             setScrolled(true);
         } else {
             setScrolled(false);
@@ -23,10 +23,9 @@ function Cabeçalho() {
     };
 
     useEffect(() => {
-        // Adiciona o event listener para o scroll
+
         window.addEventListener("scroll", handleScroll);
 
-        // Remove o event listener quando o componente for desmontado
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
@@ -49,7 +48,7 @@ function Cabeçalho() {
                 <nav className="hidden md:block">
                     <ul className="flex space-x-6 px-6 py-2">
                         {listaMenu.map((gaeul, index) => (
-                            <a className="font-['Space_Grotesk'] hover:text-[#00FFFF] transition-colors duration-300 cursor-pointer" onClick={() => setMenuOpen(false)} key={index}>
+                            <a href={`#${gaeul.toLowerCase()}`} className="font-['Space_Grotesk'] hover:text-[#00FFFF] transition-colors duration-300 cursor-pointer" onClick={() => setMenuOpen(false)} key={index}>
                                 <li>
                                     {gaeul}
                                 </li>
@@ -61,7 +60,7 @@ function Cabeçalho() {
             <nav className={`${spaceGrotesk.className} ${menuOpen ? 'block' : 'hidden'} border-t border-[#00FFFF]/20 absolute top-16 w-full bg-[#030610]`}>
                 <ul className="flex flex-col space-y-4 px-6 py-4">
                     {listaMenu.map((gaeul, index) => (
-                        <a onClick={() => setMenuOpen(false)} key={index}>
+                        <a href={`#${gaeul.toLowerCase()}`} onClick={() => setMenuOpen(false)} key={index}>
                             <li>
                                 {gaeul}
                             </li>

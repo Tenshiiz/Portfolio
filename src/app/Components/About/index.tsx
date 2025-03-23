@@ -24,7 +24,7 @@ function About() {
 
 
     return (
-        <section className="bg-[#030610] flex flex-col md:flex-row items-center gap-12 px-7.5 py-24 overflow-hidden">
+        <section id="sobre" className="bg-[#030610] flex flex-col md:flex-row items-center gap-12 px-7.5 py-24 overflow-hidden">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity : hasScrolled ? 1 : 0, x : hasScrolled ? [-50, 0] : [-50] }} transition={{ duration: 1 }} className="relative w-full h-64 lg:h-96 md:max-w-1/2 ">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#00FFFF]/40 to-[#9333EA]/40 rounded-lg opacity-70 blur-lg"></div>
                 <Image src={"https://images.unsplash.com/photo-1607705703571-c5a8695f18f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"} alt=""
@@ -37,9 +37,9 @@ function About() {
                 </h2>
                 <div className="w-20 h-1 bg-[#00FFFF] mb-6 rounded" style={{ boxShadow: 'rgba(0, 255, 255, 0.5) 0px 0px 5px, rgba(0, 255, 255, 0.3) 0px 0px 20px' }}></div>
                 <div className="space-y-4 text-gray-300">
-                    <p>Sou um desenvolvedor front-end apaixonado, com forte foco na criação de interfaces de usuário visualmente impressionantes e altamente funcionais. Com expertise em frameworks e bibliotecas modernas, construo experiências digitais fluidas que engajam os usuários e alcançam os objetivos de negócios.</p>
-                    <p>Minha jornada no desenvolvimento web começou há 5 anos e, desde então, venho aprendendo constantemente e me adaptando às novas tecnologias. Especializo-me em React, Next.js e TypeScript, com um carinho especial por criar designs responsivos usando Tailwind CSS.</p>
-                    <p>Quando não estou programando, você pode me encontrar explorando novas tendências de design, contribuindo para projetos open-source ou compartilhando meu conhecimento por meio de escrita técnica e mentoria.</p>
+                    <p>Desenvolvedor Frontend especializado em React, Next.js e TypeScript. Foco na criação de aplicações web modernas, responsivas e performáticas que oferecem excelente experiência ao usuário.</p>
+                    <p>Trabalho com as principais tecnologias do ecossistema JavaScript, incluindo Tailwind CSS para estilização e Supabase para backend. Experiência em desenvolvimento de interfaces funcionais, implementação de sistemas de autenticação e integração com APIs.</p>
+                    <p>Busco sempre entregar código limpo, componentes reutilizáveis e soluções que atendam tanto às necessidades técnicas quanto aos objetivos de negócio.</p>
                 </div>
                 <div className="flex flex-col gap-3 mt-5 md:flex-row">
                     <div className="bg-[#171717]/40 p-4 rounded-lg border border-[#00FFFF]/30">
