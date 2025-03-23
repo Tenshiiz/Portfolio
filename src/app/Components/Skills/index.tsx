@@ -191,7 +191,7 @@ export default function SkillsSection() {
                         style={{ boxShadow: "0 0 5px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3)" }}
                     ></div>
                     <p className="text-gray-300 max-w-2xl mx-auto">
-                        Im proficient in a wide range of front-end technologies and constantly expanding my skill set to stay ahead in the ever-evolving tech landscape.
+                    Sou proficiente em uma ampla variedade de tecnologias front-end e estou constantemente expandindo meu conjunto de habilidades para me manter à frente no cenário tecnológico em constante evolução.
                     </p>
                 </motion.div>
 
