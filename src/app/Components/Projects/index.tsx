@@ -164,7 +164,7 @@ export default function ProjectsSection() {
                         className="inline-block px-6 py-3 rounded border border-[#9333EA] text-[#9333EA] hover:bg-[#9333EA]/10 transition-all duration-300 font-['Space_Grotesk']"
                         style={{ boxShadow: "0 0 5px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3)" }}
                     >
-                        Vew Todos os Projetos <i className="fas fa-arrow-right ml-2"></i>
+                        Ver Todos os Projetos <i className="fas fa-arrow-right ml-2"></i>
                     </a>
                 </motion.div>
             </div>
