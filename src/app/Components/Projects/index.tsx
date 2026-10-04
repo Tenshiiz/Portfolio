@@ -96,7 +96,7 @@ export default function ProjectsSection() {
             title: "Clone do Youtube",
             description: "Clone do YouTube em React e CSS, feito para estudo, com músicas de Arcane para ouvir direto na página.",
             imgSrc: "/imgProjects/YoutubeClone.png",
-            tech: ["React.js", "CSS"],
+            tech: ["React.js", "React Router", "CSS Modules"],
             demoLink: "https://youtube-clone-tenshi.vercel.app",
             sourceLink: "https://github.com/Tenshiiz/Youtube-clone",
             color: "purple"
