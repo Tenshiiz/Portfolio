@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
+import Halo from "../ui/Halo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -15,7 +16,8 @@ const links = [
 /** Seção final de contato: três links diretos, sem formulário nem backend. */
 export default function ContactSection() {
     return (
-        <section id="contato" className="py-24 bg-space-900 relative">
+        <section id="contato" className="py-24 relative">
+            <Halo tone="pink" className="left-1/2 top-0 -ml-[22rem]" />
             <Container>
                 <motion.div
                     className="text-center"
@@ -28,7 +30,7 @@ export default function ContactSection() {
                         Entre em <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">Contato</span>
                     </h2>
                     <div
-                        className="w-20 h-1 bg-neon-cyan mx-auto mb-6 rounded"
+                        className="glint-bar [--glint-delay:-6s] w-20 h-1 bg-neon-cyan mx-auto mb-6 rounded"
                         style={{ boxShadow: "0 0 5px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)" }}
                     ></div>
                     <p className="text-gray-300 max-w-2xl mx-auto mb-10">

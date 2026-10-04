@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticlesContainer from "../ui/ParticlesContainer";
 import Container from "../ui/Container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -14,19 +13,18 @@ export default function HeroSection() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.3, // Estabelece o atraso entre os filhos
+                staggerChildren: 0.3,
             }
         },
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 10 },  // Animação de cada item
+        hidden: { opacity: 0, y: 10 },
         visible: { opacity: 1, y: 0 },
     };
 
     return (
         <section className="relative z-10 flex items-center min-h-[min(100svh,56rem)] pt-28 pb-16">
-            <ParticlesContainer />
             <Container className="relative grid items-center gap-12 lg:grid-cols-2">
             <motion.div variants={boxVariants} initial="hidden" animate="visible">
                 <motion.p variants={itemVariants} className="font-['Space_Grotesk'] text-neon-cyan mb-2">Olá, eu sou</motion.p>

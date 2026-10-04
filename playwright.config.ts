@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Configuração E2E. O viewport de cada cenário é definido nos próprios testes
- * (matriz de 4 arquétipos), então o projeto só fixa o navegador.
+ * (matriz de viewports), então o projeto só fixa o navegador.
  * `reuseExistingServer` evita subir um segundo `next dev` na porta 3000.
  */
 export default defineConfig({

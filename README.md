@@ -4,7 +4,7 @@
 
 <br />
 
-**Um cantinho escuro, com algumas estrelas, onde guardo o que construo.**
+**Um céu escuro, duas estrelas douradas cruzando e algumas constelações. Dentro dele, o que eu construo.**
 
 <br />
 
@@ -18,13 +18,20 @@
 
 <br />
 
-## O site
+## O céu
 
-Uma página só, pensada como um céu noturno: fundo profundo, partículas à deriva e luz neon em ciano, roxo e rosa. Nada grita; o movimento é lento e respeita quem prefere menos animação.
+O fundo da página inteira é um céu noturno que acompanha a rolagem. A estética é inspirada em **Genshin Impact**: estrelas gêmeas, constelações e brilhos dourados. É uma homenagem de fã; nenhum asset do jogo é usado, tudo é desenhado em CSS, SVG e canvas.
 
-Do topo ao rodapé:
+| Detalhe | O que acontece |
+|---|---|
+| **Estrelas gêmeas** | Duas estrelas douradas nascem no meio da tela e voam lado a lado, a uma distância fixa, deixando rastro. Se você rola a página, a trajetória curva junto: descer curva para baixo, subir curva para cima. |
+| **Constelações** | Linhas finas se desenham devagar entre as estrelas, seguram e se apagam. |
+| **Brilho em cruz** | O brilho de quatro pontas pulsa na cabeça das estrelas, nas constelações e na ponta da barra de cada título. |
+| **Auroras** | Três manchas de luz mudam de cor conforme a seção: ciano no topo, roxo no meio, rosa no fim. |
+| **Três profundidades** | Estrelas em camadas que rolam em velocidades diferentes. |
+| **Fio de luz** | Entre as seções, um brilho atravessa devagar uma linha fina. |
 
-**Início** → **Sobre** → **Habilidades** → **Projetos** → **Contato**
+Tudo é lento por escolha, e nada pisca. Com `prefers-reduced-motion`, o voo e a paralaxe não existem e o céu fica parado.
 
 <br />
 
@@ -53,10 +60,10 @@ Do topo ao rodapé:
 
 ## Por dentro
 
-- **Tem teclado e leitor de tela em mente:** menu navegável por teclado, `Esc` fecha e devolve o foco, botões com nome acessível.
-- **Movimento com educação:** Framer Motion obedece ao `prefers-reduced-motion` do sistema.
-- **Testado de verdade:** Playwright confere navegação, links, fontes, imagens e o layout em seis tamanhos de tela, de celular a 1920 px.
-- **Imagens leves:** as capas passam pelo otimizador do Next e há teste para garantir que não pesem demais.
+- **Teclado e leitor de tela:** menu navegável por teclado, `Esc` fecha e devolve o foco, botões com nome acessível.
+- **Movimento com educação:** Framer Motion e o céu obedecem ao `prefers-reduced-motion` do sistema.
+- **Leve:** a animação do céu não força layout (move `transform`, `opacity` e o traço de SVGs pequenos), e o canvas das estrelas gêmeas só é exibido e desenhado durante o voo.
+- **Testado de verdade:** Playwright confere navegação, links, fontes, imagens, o céu e o layout em seis tamanhos de tela, de celular a 1920 px.
 
 <br />
 

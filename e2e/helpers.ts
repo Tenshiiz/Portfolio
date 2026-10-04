@@ -1,6 +1,6 @@
 import type { Page } from "@playwright/test";
 
-/** Os 4 arquétipos dimensionais de validação de responsividade. */
+/** Matriz de viewports da validação de responsividade: desktop, notebook, tablets e celulares. */
 export const VIEWPORTS = [
   { name: "desktop-1920x1080", width: 1920, height: 1080, touch: false },
   { name: "notebook-1366x768", width: 1366, height: 768, touch: false },

@@ -35,7 +35,6 @@ const SkillCategory = ({ title, subtitle, icon: Icon, color, skills, studying = 
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
         >
-            {/* Marca d'água: ícone grande e quase transparente, só para dar profundidade ao cartão. */}
             <Icon
                 aria-hidden="true"
                 className="pointer-events-none absolute -bottom-8 -right-6 h-40 w-40 text-(--accent) opacity-[0.07]"

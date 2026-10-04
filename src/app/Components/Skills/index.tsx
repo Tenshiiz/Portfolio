@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import SkillCategory, { type SkillCategoryProps } from "./components/SkillCategory";
 import SkillItem from "./components/SkillItem";
 import Container from "../ui/Container";
+import Halo from "../ui/Halo";
 
 // Ordem do DOM = leitura em linhas: [Front-end | Ferramentas], [Back-end | Estudando agora].
 const areas: SkillCategoryProps[] = [
@@ -54,7 +55,7 @@ const additionalSkills = [
 export default function SkillsSection() {
     return (
         <section id="habilidades" className="relative flex items-center pt-20 pb-8 xl:min-h-svh">
-            <div className="absolute inset-0 bg-gradient-to-b from-space-900 to-space-950"></div>
+            <Halo tone="purple" className="-right-[10%] top-[6%]" />
             <Container className="relative z-10">
                 <motion.div
                     className="mb-8 text-center"
@@ -70,7 +71,7 @@ export default function SkillsSection() {
                         </span>
                     </h2>
                     <div
-                        className="w-20 h-1 bg-neon-purple mx-auto mb-6 rounded"
+                        className="glint-bar [--glint-delay:-1.5s] w-20 h-1 bg-neon-purple mx-auto mb-6 rounded"
                         style={{ boxShadow: "0 0 5px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3)" }}
                     ></div>
                     <p className="text-gray-300 max-w-2xl mx-auto">

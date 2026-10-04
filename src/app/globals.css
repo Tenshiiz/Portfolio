@@ -19,6 +19,13 @@
   --color-space-950: #030610;
 }
 
+/* `static` mantém as variáveis no CSS final mesmo sem utilitário que as use: o canvas do céu as lê em runtime. */
+@theme static {
+  --color-gold: #ffce70;
+  --color-gold-core: #fff3d6;
+  --color-ink: #e8e4dc;
+}
+
 /*
  * A cor de destaque de um componente é dado (`data-accent`), não nome de classe.
  * O Tailwind só gera classes que aparecem inteiras no código, então interpolar
@@ -55,7 +62,237 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--color-space-900);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Céu: camada fixa atrás de toda a página (ver `SkyBackground`).
+ * Só `transform`, `opacity` e o traço de SVGs pequenos se movem, então a animação não força layout.
+ * `--sy` (rolagem) e `--wa/--wb/--wc` (peso de cada aurora) são escritos no próprio `.sky`,
+ * para o recálculo de estilo atingir apenas esta subárvore.
+ */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+  background: var(--color-space-900);
+}
+
+.sky-aurora {
+  position: absolute;
+  width: 90vmax;
+  height: 90vmax;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+.sky-aurora > i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+.sky-aurora-cyan {
+  right: -28vmax;
+  top: -34vmax;
+  opacity: calc(0.3 + var(--wa, 1) * 0.7);
+  transform: translate3d(0, calc(var(--sy, 0px) * -0.1), 0);
+}
+.sky-aurora-cyan > i {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-neon-cyan) 17%, transparent),
+    color-mix(in srgb, var(--color-neon-cyan) 5%, transparent) 55%,
+    transparent
+  );
+  animation: sky-drift-a 84s ease-in-out infinite alternate;
+}
+.sky-aurora-purple {
+  left: -34vmax;
+  top: 18vh;
+  opacity: calc(0.25 + var(--wb, 0) * 0.75);
+  transform: translate3d(0, calc(var(--sy, 0px) * -0.16), 0);
+}
+.sky-aurora-purple > i {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-neon-purple) 26%, transparent),
+    color-mix(in srgb, var(--color-neon-purple) 7%, transparent) 55%,
+    transparent
+  );
+  animation: sky-drift-b 104s ease-in-out infinite alternate;
+}
+.sky-aurora-pink {
+  right: -30vmax;
+  bottom: -46vmax;
+  opacity: calc(0.2 + var(--wc, 0) * 0.8);
+  transform: translate3d(0, calc(var(--sy, 0px) * -0.07), 0);
+}
+.sky-aurora-pink > i {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-neon-pink) 20%, transparent),
+    color-mix(in srgb, var(--color-neon-pink) 5%, transparent) 55%,
+    transparent
+  );
+  animation: sky-drift-c 92s ease-in-out infinite alternate;
+}
+@keyframes sky-drift-a { to { transform: translate3d(-9vmax, 7vmax, 0) scale(1.08); } }
+@keyframes sky-drift-b { to { transform: translate3d(10vmax, -6vmax, 0) scale(1.1); } }
+@keyframes sky-drift-c { to { transform: translate3d(-8vmax, -8vmax, 0) scale(1.06); } }
+
+/* Três profundidades de estrelas; cada uma rola numa velocidade (paralaxe). O campo é uma lista de box-shadow num elemento de 1px. */
+.sky-stars {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.sky-stars > i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  will-change: opacity;
+}
+.sky-stars-far { transform: translate3d(0, calc(var(--sy, 0px) * -0.04), 0); }
+.sky-stars-mid { transform: translate3d(0, calc(var(--sy, 0px) * -0.09), 0); }
+.sky-stars-near { transform: translate3d(0, calc(var(--sy, 0px) * -0.18), 0); }
+.sky-stars-far > i { animation: sky-twinkle 11s ease-in-out infinite; }
+.sky-stars-mid > i { animation: sky-twinkle 15s ease-in-out -6s infinite; }
+.sky-stars-near > i { animation: sky-twinkle 19s ease-in-out -11s infinite; }
+@keyframes sky-twinkle {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* Constelações: as linhas se desenham, seguram e se apagam num ciclo longo. `pathLength="1"` normaliza o traço. */
+.sky-constellation {
+  position: absolute;
+  overflow: visible;
+  opacity: 0;
+  animation: sky-constellation 26s ease-in-out var(--d, 0s) infinite;
+}
+.sky-constellation path {
+  stroke: color-mix(in srgb, var(--color-neon-cyan) 28%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: sky-draw 26s ease-out var(--d, 0s) infinite;
+}
+.sky-constellation circle { fill: color-mix(in srgb, var(--color-ink) 65%, transparent); }
+.sky-constellation .sky-cross {
+  stroke: var(--color-gold-core);
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  animation: sky-pulse 7s ease-in-out var(--d, 0s) infinite;
+}
+@keyframes sky-constellation {
+  0% { opacity: 0; }
+  12%, 70% { opacity: 1; }
+  88%, 100% { opacity: 0; }
+}
+@keyframes sky-draw {
+  0% { stroke-dashoffset: 1; }
+  30%, 100% { stroke-dashoffset: 0; }
+}
+/* Só opacidade: `transform` em filhos de SVG invalida o layout a cada quadro. */
+@keyframes sky-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.65; }
+}
+
+.sky-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* Vinheta e grão: a vinheta mantém o centro iluminado; o grão estático quebra o degradê em faixas dos fundos escuros. */
+.sky-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, transparent 55%, color-mix(in srgb, var(--color-space-950) 55%, transparent) 100%);
+}
+.sky-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.88  0 0 0 0 0.85  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Divisor entre seções no lugar do corte de cor: um fio de luz com um brilho que o atravessa devagar. */
+.section-sep {
+  position: relative;
+  height: 1px;
+  width: min(70rem, 100% - 3rem);
+  margin-inline: auto;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-neon-cyan) 22%, transparent) 30%,
+    color-mix(in srgb, var(--color-neon-purple) 22%, transparent) 70%,
+    transparent
+  );
+}
+.section-sep::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 22%;
+  background: linear-gradient(90deg, transparent, var(--color-neon-cyan), transparent);
+  animation: sky-sweep 14s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  will-change: transform;
+}
+@keyframes sky-sweep {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(460%); }
+}
+
+/* Brilho local atrás do conteúdo de cada seção (ver `Halo`). */
+.halo {
+  position: absolute;
+  width: 45rem;
+  height: 45rem;
+  border-radius: 50%;
+}
+.halo-cyan { background: radial-gradient(closest-side, color-mix(in srgb, var(--color-neon-cyan) 10%, transparent), transparent); }
+.halo-purple { background: radial-gradient(closest-side, color-mix(in srgb, var(--color-neon-purple) 14%, transparent), transparent); }
+.halo-pink { background: radial-gradient(closest-side, color-mix(in srgb, var(--color-neon-pink) 10%, transparent), transparent); }
+
+/* Brilho em cruz que acende na ponta da barra de título; `--glint-delay` desencontra as barras. */
+.glint-bar { position: relative; }
+.glint-bar::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background: radial-gradient(circle, var(--color-gold-core) 0 20%, var(--color-gold) 45%, transparent 75%);
+  clip-path: polygon(50% 0, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0 50%, 41% 41%);
+  opacity: 0;
+  animation: sky-glint 9s ease-in-out var(--glint-delay, 0s) infinite;
+}
+@keyframes sky-glint {
+  0%, 68%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  80% { opacity: 1; transform: scale(1) rotate(45deg); }
+  92% { opacity: 0; transform: scale(0.6) rotate(90deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky *, .section-sep::after, .glint-bar::after { animation: none !important; }
+  .sky-constellation { opacity: 0.55; }
+  .sky-constellation path { stroke-dashoffset: 0; }
+  .sky-canvas, .glint-bar::after { display: none !important; }
 }

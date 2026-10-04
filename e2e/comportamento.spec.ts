@@ -205,13 +205,29 @@ test.describe("renderização visual", () => {
     });
   }
 
-  test("spotlight do hero gera um gradiente (classe arbitrária válida)", async ({ page }) => {
+  test("as auroras do céu geram gradientes (variáveis do tema resolvidas)", async ({ page }) => {
     await page.goto("/");
-    const fundo = await page
-      .locator('div[class*="h-[200%]"]')
-      .first()
-      .evaluate((el) => getComputedStyle(el).backgroundImage);
-    expect(fundo).not.toBe("none");
+    for (const tom of ["cyan", "purple", "pink"]) {
+      const fundo = await page
+        .locator(`.sky-aurora-${tom} > i`)
+        .evaluate((el) => getComputedStyle(el).backgroundImage);
+      expect(fundo, `aurora ${tom}`).toContain("radial-gradient");
+    }
+  });
+
+  test("o céu fica atrás do conteúdo e cobre a viewport", async ({ page }) => {
+    await page.goto("/");
+    const { ceu, conteudo, cobre } = await page.evaluate(() => {
+      const sky = document.querySelector<HTMLElement>("[data-sky]")!;
+      const caixa = sky.getBoundingClientRect();
+      return {
+        ceu: getComputedStyle(sky).zIndex,
+        conteudo: getComputedStyle(document.getElementById("inicio")!).zIndex,
+        cobre: caixa.width === innerWidth && caixa.height === innerHeight,
+      };
+    });
+    expect(Number(conteudo)).toBeGreaterThan(Number(ceu));
+    expect(cobre).toBe(true);
   });
 
   test("brilho do ícone de habilidade aparece no hover do cartão", async ({ page }) => {
@@ -241,12 +257,27 @@ test.describe("movimento", () => {
     return { antes, depois: await leitura() };
   }
 
-  test("sem preferência de movimento: partículas por transform e orbe flutuando", async ({ page }) => {
+  /** `translateY` aplicado pela paralaxe à camada de estrelas, lido do `transform` computado. */
+  const deslocamentoDaCamada = (page: import("@playwright/test").Page, camada: string) =>
+    page.locator(camada).evaluate((el) => new DOMMatrixReadOnly(getComputedStyle(el).transform).m42);
+
+  test("sem preferência de movimento: estrelas em paralaxe, voo das gêmeas e orbe flutuando", async ({ page }) => {
     await page.goto("/");
-    const particulas = page.locator("[data-particle]");
-    // Criadas em `useEffect`, depois da hidratação: contar logo após o `goto` é uma corrida.
-    await expect.poll(() => particulas.count()).toBeGreaterThanOrEqual(20);
-    expect(await particulas.first().evaluate((el) => (el as HTMLElement).style.transform)).toContain("translate3d");
+    // O campo de estrelas é gerado em `useEffect`, depois da hidratação: ler logo após o `goto` é uma corrida.
+    await expect
+      .poll(() => page.locator(".sky-stars-near > i").evaluate((el) => (el as HTMLElement).style.boxShadow))
+      .toContain("color-mix");
+
+    await page.evaluate(() => window.scrollTo(0, 1000));
+    await expect.poll(() => deslocamentoDaCamada(page, ".sky-stars-near")).toBeLessThan(-100);
+    const perto = await deslocamentoDaCamada(page, ".sky-stars-near");
+    const longe = await deslocamentoDaCamada(page, ".sky-stars-far");
+    expect(Math.abs(perto), "a camada próxima deve andar mais que a distante").toBeGreaterThan(Math.abs(longe));
+
+    await expect
+      .poll(() => page.locator(".sky-canvas").evaluate((el) => getComputedStyle(el).display), { timeout: 8000 })
+      .toBe("block");
+
     const { antes, depois } = await transformsDoOrbe(page);
     expect(depois, "controle: o orbe deveria estar se movendo").not.toBe(antes);
   });
@@ -254,10 +285,13 @@ test.describe("movimento", () => {
   test.describe("com prefers-reduced-motion: reduce", () => {
     test.use({ reducedMotion: "reduce" });
 
-    test("não cria partículas", async ({ page }) => {
+    test("o céu fica sem animação e sem voo, e a paralaxe não anda", async ({ page }) => {
       await page.goto("/");
-      await page.waitForTimeout(500);
-      await expect(page.locator("[data-particle]")).toHaveCount(0);
+      await page.evaluate(() => window.scrollTo(0, 1000));
+      await page.waitForTimeout(3800);
+      expect(await page.locator(".sky-canvas").evaluate((el) => getComputedStyle(el).display)).toBe("none");
+      expect(await page.locator(".sky-aurora-cyan > i").evaluate((el) => getComputedStyle(el).animationName)).toBe("none");
+      expect(await deslocamentoDaCamada(page, ".sky-stars-near")).toBe(0);
     });
 
     test("o orbe do hero fica parado", async ({ page }) => {

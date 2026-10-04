@@ -72,7 +72,6 @@ function Header() {
                 >
                     <Menu className="w-6 h-6" />
                 </button>
-                {/* Nav para Desktop */}
                 <nav className="hidden md:block">
                     <ul className="flex space-x-6 px-6 py-2">
                         {listaMenu.map(({ label, id }) => (

@@ -8,6 +8,7 @@ import { faArrowRight, faEye } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import type { Accent } from "../ui/accent";
 import Container from "../ui/Container";
+import Halo from "../ui/Halo";
 
 interface ProjectProps {
     title: string;
@@ -33,7 +34,6 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
         >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-(--accent)/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-            {/* Project Image */}
             <div className="relative w-full h-60">
                 <Image
                     src={imgSrc}
@@ -44,12 +44,10 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
                 />
             </div>
 
-            {/* Project Details */}
             <div className="p-6">
                 <h3 className="text-xl font-['Space_Grotesk'] mb-2 group-hover:text-(--accent) transition-colors duration-300">{title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{description}</p>
 
-                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
                     {tech.map((item, index) => (
                         <span
@@ -61,7 +59,6 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
                     ))}
                 </div>
 
-                {/* Project Links */}
                 <div className="flex justify-between">
                     <a
                         href={demoLink}
@@ -107,7 +104,8 @@ export default function ProjectsSection() {
     ];
 
     return (
-        <section id="projetos" className="py-24 bg-space-950 relative">
+        <section id="projetos" className="py-24 relative">
+            <Halo tone="cyan" className="left-[20%] top-[12%]" />
             <Container>
                 <motion.div
                     className="text-center mb-16"
@@ -120,7 +118,7 @@ export default function ProjectsSection() {
                         Meus <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent ">Projetos</span>
                     </h2>
                     <div
-                        className="w-20 h-1 bg-neon-cyan mx-auto mb-6 rounded"
+                        className="glint-bar [--glint-delay:-3s] w-20 h-1 bg-neon-cyan mx-auto mb-6 rounded"
                         style={{ boxShadow: "0 0 5px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)" }}
                     ></div>
                     <p className="text-gray-300 max-w-2xl mx-auto">
