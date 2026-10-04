@@ -30,7 +30,7 @@ const areas: SkillCategoryProps[] = [
         subtitle: "APIs e serviços",
         icon: Server,
         color: "purple",
-        skills: ["FastAPI", "RESTful APIs", "SQL"],
+        skills: ["FastAPI", "Supabase", "RESTful APIs", "SQL"],
         className: "xl:col-span-7",
     },
     {
@@ -45,7 +45,7 @@ const areas: SkillCategoryProps[] = [
 ];
 
 const additionalSkills = [
-    "JavaScript", "Redux", "Jest", "GraphQL", "Node.js", "Webpack", "Framer Motion", "Vercel",
+    "JavaScript", "Node.js", "Framer Motion", "Vercel",
 ];
 
 /**

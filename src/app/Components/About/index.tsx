@@ -29,23 +29,26 @@ function About() {
                 </h2>
                 <div className="glint-bar w-20 h-1 bg-neon-cyan mb-6 rounded" style={{ boxShadow: 'rgba(0, 255, 255, 0.5) 0px 0px 5px, rgba(0, 255, 255, 0.3) 0px 0px 20px' }}></div>
                 <div className="space-y-4 text-gray-300">
-                    <p>Desenvolvedor Frontend especializado em React, Next.js e TypeScript. Foco na criação de aplicações web modernas, responsivas e performáticas que oferecem excelente experiência ao usuário.</p>
-                    <p>Trabalho com as principais tecnologias do ecossistema JavaScript, incluindo Tailwind CSS para estilização e Supabase para backend. Experiência em desenvolvimento de interfaces funcionais, implementação de sistemas de autenticação e integração com APIs.</p>
-                    <p>Busco sempre entregar código limpo, componentes reutilizáveis e soluções que atendam tanto às necessidades técnicas quanto aos objetivos de negócio.</p>
+                    <p>Sou desenvolvedor front-end e trabalho com React, Next.js e TypeScript. Gosto de interfaces acessíveis, responsivas e cobertas por testes automatizados, com Vitest e Playwright.</p>
+                    <p>No back-end, uso Supabase e implemento autenticação. Com Python e FastAPI escrevo APIs e microsserviços para integrar modelos de IA a aplicações reais, que é o que estudo hoje na pós da FIAP.</p>
+                    <p>Publiquei o Lumen, um clone do YouTube e este portfólio, todos com código aberto no GitHub.</p>
                 </div>
                 <div className="flex flex-col gap-3 mt-5 md:flex-row">
                     <div className="bg-[#171717]/40 p-4 rounded-lg border border-neon-cyan/30">
                         <h3 className="font-['Orbitron'] text-neon-cyan mb-2">
-                            Experiencia
+                            Experiência
                         </h3>
                         <p className="text-gray-300">
-                            2 anos de experiência em desenvolvimento web
+                            Analista de suporte técnico na Quality Digital, em Curitiba. Projetos web desde 2023.
                         </p>
                     </div>
                     <div className="bg-[#171717]/40 p-4 rounded-lg border border-neon-purple/60">
                         <h3 className="font-['Orbitron'] text-neon-purple mb-2">Educação</h3>
                         <p className="text-gray-300">
-                            Graduação em Análise e Desenvolvimento de Sistemas
+                            Pós-graduação em AI Scientist, FIAP (2026–2027)
+                        </p>
+                        <p className="text-gray-300">
+                            Tecnólogo em ADS, Estácio (2022–2024)
                         </p>
                     </div>
                 </div>

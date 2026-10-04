@@ -25,7 +25,7 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
     return (
         <motion.div
             data-accent={color}
-            className="group relative overflow-hidden w-full md:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)] rounded-lg bg-space-900 border border-(--accent)/20 hover:border-(--accent) transition-all duration-500"
+            className="group relative flex flex-col overflow-hidden w-full md:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)] rounded-lg bg-space-900 border border-(--accent)/20 hover:border-(--accent) transition-all duration-500"
             whileHover={{ y: -10 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
         >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-(--accent)/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-            <div className="relative w-full h-60">
+            <div className="relative h-60 w-full shrink-0">
                 <Image
                     src={imgSrc}
                     alt={title}
@@ -44,7 +44,7 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
                 />
             </div>
 
-            <div className="p-6">
+            <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-xl font-['Space_Grotesk'] mb-2 group-hover:text-(--accent) transition-colors duration-300">{title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{description}</p>
 
@@ -59,7 +59,7 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
                     ))}
                 </div>
 
-                <div className="flex justify-between">
+                <div className="mt-auto flex justify-between">
                     <a
                         href={demoLink}
                         className="text-(--accent) hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md"
@@ -85,16 +85,16 @@ export default function ProjectsSection() {
     const projects: ProjectProps[] = [
         {
             title: "Lumen",
-            description: "Uma ferramenta elegante e intuitiva para designers e desenvolvedores explorarem e manipularem cores na web.",
-            imgSrc: "/imgProjects/LumenLogo.png",
-            tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+            description: "Ferramenta para designers e desenvolvedores: escolha a cor numa roda cromática ou extraia de uma imagem, confira o contraste WCAG, veja como pessoas com daltonismo a percebem e exporte para CSS, Tailwind, JSON ou TypeScript.",
+            imgSrc: "/imgProjects/LumenCapa.jpg",
+            tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vitest", "Playwright"],
             demoLink: "https://lumen-ashy.vercel.app/",
             sourceLink: "https://github.com/Tenshiiz/Lumen",
             color: "cyan"
         },
         {
             title: "Clone do Youtube",
-            description: "Projeto clone do YouTube desenvolvido para fins de estudo, com foco em assistir vídeos salvos e demonstrar habilidades em desenvolvimento web.",
+            description: "Clone do YouTube em React e CSS, feito para estudo, com músicas de Arcane para ouvir direto na página.",
             imgSrc: "/imgProjects/YoutubeClone.png",
             tech: ["React.js", "CSS"],
             demoLink: "https://youtube-clone-tenshi.vercel.app",
@@ -122,7 +122,7 @@ export default function ProjectsSection() {
                         style={{ boxShadow: "0 0 5px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)" }}
                     ></div>
                     <p className="text-gray-300 max-w-2xl mx-auto">
-                        Aqui estão alguns dos meus projetos recentes. Cada um representa um desafio único e exibe diferentes habilidades e tecnologias.
+                        Dois projetos no ar, com código aberto no GitHub.
                     </p>
                 </motion.div>
 

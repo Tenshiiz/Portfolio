@@ -3,9 +3,9 @@ import "./globals.css";
 import MotionProvider from "./Components/ui/MotionProvider";
 
 export const metadata: Metadata = {
-  title: "Carlos Eduardo | Front-end Developer",
+  title: "Carlos Eduardo Vanziler | Desenvolvedor Front-end",
   description:
-    "Portfólio de Carlos Eduardo, desenvolvedor front-end. Experiências web interativas e de alto desempenho.",
+    "Portfólio de Carlos Eduardo Vanziler Gomes, desenvolvedor front-end em Curitiba (React, Next.js, TypeScript) e pós-graduando em IA.",
 };
 
 export default function RootLayout({

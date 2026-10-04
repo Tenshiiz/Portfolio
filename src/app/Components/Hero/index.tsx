@@ -32,10 +32,10 @@ export default function HeroSection() {
                     Carlos <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent ">Eduardo</span>
                 </motion.h1>
                 <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl lg:text-4xl font-['Space_Grotesk'] mb-6 text-[#A3A3A3]">
-                    Front-end <span className="text-neon-purple">Developer</span>
+                    Desenvolvedor <span className="text-neon-purple">Front-end</span>
                 </motion.h2>
                 <motion.p variants={itemVariants} className="text-gray-300 mb-8 max-w-lg">
-                    Eu crio experiências web bonitas, interativas e de alto desempenho usando as tecnologias mais recentes e as melhores práticas.
+                    Construo interfaces acessíveis e responsivas com React, Next.js e TypeScript, e testo o que escrevo de ponta a ponta. Pós-graduando em IA, levo Python e FastAPI ao back-end.
                 </motion.p>
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-4 relative z-20">
                     <a href="#projetos" className="cursor-pointer px-6 py-3 rounded border border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 transition-all duration-300 font-['Space_Grotesk']" style={{ boxShadow: 'rgba(0, 255, 255, 0.5) 0px 0px 5px, rgba(0, 255, 255, 0.3) 0px 0px 20px' }} >Meu trabalho</a>
@@ -45,7 +45,7 @@ export default function HeroSection() {
                     <a href="https://github.com/Tenshiiz" className="inline-flex items-center justify-center w-11 h-11 text-gray-400 hover:text-neon-cyan transition-colors duration-300" aria-label="GitHub">
                         <FontAwesomeIcon icon={faGithub} className=" text-xl" />
                     </a>
-                    <a href="https://www.linkedin.com/in/carloseduardo2003" className="inline-flex items-center justify-center w-11 h-11 text-gray-400 hover:text-neon-cyan transition-colors duration-300" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/carlos-vanziler" className="inline-flex items-center justify-center w-11 h-11 text-gray-400 hover:text-neon-cyan transition-colors duration-300" aria-label="LinkedIn">
                         <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
                     </a>
                 </motion.div>

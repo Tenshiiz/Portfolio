@@ -7,7 +7,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
     
     return (
-      <footer className="py-8 bg-space-950 border-t border-neon-cyan/10">
+      <footer className="py-8 border-t border-neon-cyan/10">
         <Container>
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
@@ -25,7 +25,7 @@ export default function Footer() {
                 &copy; {currentYear} Carlos Eduardo.
               </p>
               <p className="text-gray-500 text-sm mt-1">
-                Construido <FontAwesomeIcon icon={faHeart} className="text-neon-pink" /> usando React & Tailwind CSS
+                Feito com <FontAwesomeIcon icon={faHeart} className="text-neon-pink" /> usando Next.js e Tailwind CSS
               </p>
             </div>
           </div>

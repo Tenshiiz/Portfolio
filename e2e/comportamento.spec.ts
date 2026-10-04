@@ -5,7 +5,7 @@ test.describe("documento", () => {
   test("idioma e título", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
-    await expect(page).toHaveTitle("Carlos Eduardo | Front-end Developer");
+    await expect(page).toHaveTitle("Carlos Eduardo Vanziler | Desenvolvedor Front-end");
   });
 
   test("sem erros de console, exceções ou respostas HTTP >= 400", async ({ page }) => {

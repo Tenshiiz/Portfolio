@@ -9,7 +9,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const links = [
     { label: "E-mail", href: "mailto:carlosvanziler50@gmail.com", icon: faEnvelope, external: false },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/carloseduardo2003", icon: faLinkedin, external: true },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/carlos-vanziler", icon: faLinkedin, external: true },
     { label: "GitHub", href: "https://github.com/Tenshiiz", icon: faGithub, external: true },
 ];
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./imagens/banner.svg" alt="Carlos Eduardo, Front-end Developer" width="100%" />
+<img src="./imagens/banner.svg" alt="Carlos Eduardo, Desenvolvedor Front-end" width="100%" />
 
 <br />
 
@@ -14,24 +14,27 @@
 [![Tailwind](https://img.shields.io/badge/Tailwind_4-0a0820?style=for-the-badge&logo=tailwind-css&logoColor=38B2AC)](https://tailwindcss.com)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0a0820?style=for-the-badge&logo=framer&logoColor=e879f9)](https://www.framer.com/motion)
 
+<br />
+
+### [Visitar o site →](https://ceportfolio.vercel.app)
+
 </div>
 
 <br />
 
-## O céu
+## O que é
 
-O fundo da página inteira é um céu noturno que acompanha a rolagem. A estética é inspirada em **Genshin Impact**: estrelas gêmeas, constelações e brilhos dourados. É uma homenagem de fã; nenhum asset do jogo é usado, tudo é desenhado em CSS, SVG e canvas.
+Este é o meu portfólio: um site de uma página só, onde conto quem eu sou, o que sei fazer e o que já coloquei no ar.
 
-| Detalhe | O que acontece |
-|---|---|
-| **Estrelas gêmeas** | Duas estrelas douradas nascem no meio da tela e voam lado a lado, a uma distância fixa, deixando rastro. Se você rola a página, a trajetória curva junto: descer curva para baixo, subir curva para cima. |
-| **Constelações** | Linhas finas se desenham devagar entre as estrelas, seguram e se apagam. |
-| **Brilho em cruz** | O brilho de quatro pontas pulsa na cabeça das estrelas, nas constelações e na ponta da barra de cada título. |
-| **Auroras** | Três manchas de luz mudam de cor conforme a seção: ciano no topo, roxo no meio, rosa no fim. |
-| **Três profundidades** | Estrelas em camadas que rolam em velocidades diferentes. |
-| **Fio de luz** | Entre as seções, um brilho atravessa devagar uma linha fina. |
+Eu queria que ele tivesse cara de lugar, e não de currículo. Por isso o fundo é um céu noturno que acompanha você: as cores mudam de uma seção para outra, constelações se desenham devagar e, de vez em quando, duas estrelas douradas atravessam a tela juntas. Se você rolar a página enquanto elas passam, elas fazem a curva com você.
 
-Tudo é lento por escolha, e nada pisca. Com `prefers-reduced-motion`, o voo e a paralaxe não existem e o céu fica parado.
+<br />
+
+## Sobre mim
+
+Sou o Carlos, de Curitiba. Hoje trabalho com suporte técnico e estudo inteligência artificial na pós. E, de vez em quando, gosto de construir coisas como esta.
+
+O que me prende nisso é o detalhe: a cor certa, o movimento que não incomoda, a tela que funciona direitinho no celular. Quase sempre a parte mais difícil de um projeto, para mim, é o design. E é também a que eu mais gosto.
 
 <br />
 
@@ -40,17 +43,15 @@ Tudo é lento por escolha, e nada pisca. Com `prefers-reduced-motion`, o voo e a
 <table>
   <tr>
     <td width="50%" align="center" valign="top">
-      <a href="https://lumen-ashy.vercel.app/"><img src="./public/imgProjects/LumenLogo.png" alt="Lumen" width="100%" /></a>
+      <a href="https://lumen-ashy.vercel.app/"><img src="./public/imgProjects/LumenCapa.jpg" alt="Lumen" width="100%" /></a>
       <h3>Lumen</h3>
-      <sub>Next.js · TypeScript · Tailwind CSS</sub>
-      <br /><br />
+      <p>Para escolher cores e descobrir se elas funcionam para todo mundo, inclusive para quem enxerga cores de outro jeito.</p>
       <a href="https://lumen-ashy.vercel.app/">Ver ao vivo</a> &nbsp;·&nbsp; <a href="https://github.com/Tenshiiz/Lumen">Código</a>
     </td>
     <td width="50%" align="center" valign="top">
       <a href="https://youtube-clone-tenshi.vercel.app"><img src="./public/imgProjects/YoutubeClone.png" alt="Clone do YouTube" width="100%" /></a>
       <h3>Clone do YouTube</h3>
-      <sub>React.js · CSS</sub>
-      <br /><br />
+      <p>Um clone feito para estudar, que acabou ganhando uma trilha sonora de Arcane.</p>
       <a href="https://youtube-clone-tenshi.vercel.app">Ver ao vivo</a> &nbsp;·&nbsp; <a href="https://github.com/Tenshiiz/Youtube-clone">Código</a>
     </td>
   </tr>
@@ -58,21 +59,29 @@ Tudo é lento por escolha, e nada pisca. Com `prefers-reduced-motion`, o voo e a
 
 <br />
 
-## Por dentro
-
-- **Teclado e leitor de tela:** menu navegável por teclado, `Esc` fecha e devolve o foco, botões com nome acessível.
-- **Movimento com educação:** Framer Motion e o céu obedecem ao `prefers-reduced-motion` do sistema.
-- **Leve:** a animação do céu não força layout (move `transform`, `opacity` e o traço de SVGs pequenos), e o canvas das estrelas gêmeas só é exibido e desenhado durante o voo.
-- **Testado de verdade:** Playwright confere navegação, links, fontes, imagens, o céu e o layout em seis tamanhos de tela, de celular a 1920 px.
-
-<br />
-
 <div align="center">
 
 ## Vamos conversar?
 
-[**LinkedIn**](https://www.linkedin.com/in/carloseduardo2003) &nbsp;·&nbsp; [**GitHub**](https://github.com/Tenshiiz) &nbsp;·&nbsp; [**E-mail**](mailto:carlosvanziler50@gmail.com)
+[**LinkedIn**](https://www.linkedin.com/in/carlos-vanziler) &nbsp;·&nbsp; [**GitHub**](https://github.com/Tenshiiz) &nbsp;·&nbsp; [**E-mail**](mailto:carlosvanziler50@gmail.com)
 
-<sub>Feito por Carlos Eduardo</sub>
+<br />
+
+<sub><i>Que as estrelas iluminem seu caminho.</i></sub>
 
 </div>
+
+<br />
+
+<details>
+<summary><b>Para quem quer ver por dentro</b></summary>
+
+<br />
+
+- **Stack:** Next.js 15, React 19, TypeScript, Tailwind CSS 4 e Framer Motion.
+- **O céu:** auroras e estrelas animam só `transform` e `opacity`, e as estrelas douradas são desenhadas num canvas que só aparece durante o voo.
+- **Movimento reduzido:** com `prefers-reduced-motion`, o voo e a paralaxe somem e o céu fica parado.
+- **Acessibilidade:** menu navegável por teclado, `Esc` fecha e devolve o foco, botões com nome acessível.
+- **Testes:** Playwright confere navegação, links, fontes, imagens, o céu e o layout em seis tamanhos de tela, de celular a 1920 px.
+
+</details>
