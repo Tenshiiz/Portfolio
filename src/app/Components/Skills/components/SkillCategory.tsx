@@ -1,75 +1,74 @@
-import React from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { motion } from 'framer-motion';
-import SkillItem from './SkillItem';
+"use client";
 
-const colorStyles = {
-    cyan: {
-        text: 'text-[#00FFFF]',
-        gradient: 'bg-gradient-to-r from-[#00FFFF] to-[#9333EA]',
-        shadow: 'shadow-[0_0_5px_rgba(0,255,255,0.5),0_0_20px_rgba(0,255,255,0.3)]',
-        border: 'border-[#00FFFF]/20 hover:border-[#00FFFF]/60',
-        bg: 'bg-[#00FFFF]/10',
-        badge: 'bg-[#00FFFF]/10 text-[#00FFFF] border-[#00FFFF]/30',
-        hover: 'group-hover:text-[#00FFFF]'
-    },
-    purple: {
-        text: 'text-[#9333EA]',
-        gradient: 'bg-gradient-to-r from-[#9333EA] to-[#E879F9]',
-        shadow: 'shadow-[0_0_5px_rgba(147,51,234,0.5),0_0_20px_rgba(147,51,234,0.3)]',
-        border: 'border-[#9333EA]/20 hover:border-[#9333EA]/60',
-        bg: 'bg-[#9333EA]/10',
-        badge: 'bg-[#9333EA]/10 text-[#9333EA] border-[#9333EA]/30',
-        hover: 'group-hover:text-[#9333EA]'
-    },
-    pink: {
-        text: 'text-[#E879F9]',
-        gradient: 'bg-gradient-to-r from-[#E879F9] to-[#9333EA]',
-        shadow: 'shadow-[0_0_5px_rgba(232,121,249,0.5),0_0_20px_rgba(232,121,249,0.3)]',
-        border: 'border-[#E879F9]/20 hover:border-[#E879F9]/60',
-        bg: 'bg-[#E879F9]/10',
-        badge: 'bg-[#E879F9]/10 text-[#E879F9] border-[#E879F9]/30',
-        hover: 'group-hover:text-[#E879F9]'
-    }
-};
+import type { LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import SkillItem from "./SkillItem";
+import type { Accent } from "../../ui/accent";
+import { mono } from "../../ui/fonts";
 
-interface SkillCategoryProps {
+export interface SkillCategoryProps {
     title: string;
-    icon: IconDefinition;
-    color: "cyan" | "purple" | "pink";
-    skills: Array<{ name: string; percentage: number }>;
+    subtitle: string;
+    icon: LucideIcon;
+    color: Accent;
+    skills: string[];
+    /** Área em aprendizado: borda tracejada, subtítulo de status e chips tracejados. */
+    studying?: boolean;
+    className?: string;
 }
 
-const SkillCategory = ({ title, icon, color, skills }: SkillCategoryProps) => {
+// Brilho radial no canto superior direito + degradê diagonal, ambos na cor de destaque.
+const SURFACE =
+    "border-(--accent)/30 bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--accent)_16%,transparent),transparent_55%),linear-gradient(155deg,color-mix(in_srgb,var(--accent)_7%,transparent),#0A0E1B_60%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)]";
+const SURFACE_STUDYING =
+    "border-dashed border-(--accent)/50 bg-[#0A0E1B] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--accent)_10%,transparent),transparent_55%)]";
+
+/** Cartão de uma área; o halo do ícone acende no hover do cartão. */
+const SkillCategory = ({ title, subtitle, icon: Icon, color, skills, studying = false, className = "" }: SkillCategoryProps) => {
     return (
-        <motion.div
-            className={`bg-[#171717]/30 rounded-lg p-6 border ${colorStyles[color].border} transition-all duration-300 group`}
-            whileHover={{ y: -5 }}
+        <motion.section
+            data-accent={color}
+            className={`group relative flex min-w-0 flex-col justify-between gap-6 overflow-hidden rounded-3xl border p-7 transition-colors duration-300 hover:border-(--accent)/60 xl:min-h-[clamp(190px,24svh,300px)] ${studying ? SURFACE_STUDYING : SURFACE} ${className}`}
+            whileHover={{ y: -3 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="flex items-center mb-4">
-                <div
-                    className={`w-12 h-12 rounded-full ${colorStyles[color].bg} flex items-center justify-center ${colorStyles[color].text} mr-4 group-hover:${colorStyles[color].shadow} transition-all duration-300`}
+            {/* Marca d'água: ícone grande e quase transparente, só para dar profundidade ao cartão. */}
+            <Icon
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-8 -right-6 h-40 w-40 text-(--accent) opacity-[0.07]"
+                strokeWidth={1.1}
+            />
+
+            <div className="relative z-10 flex items-center gap-4">
+                <span
+                    aria-hidden="true"
+                    data-skill-icon
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-(--accent)/35 bg-(--accent)/12 text-(--accent) transition-all duration-300 group-hover:glow"
                 >
-                    <FontAwesomeIcon icon={icon} />
+                    <Icon className="h-7 w-7" strokeWidth={1.8} />
+                </span>
+                <div>
+                    <h3 className="font-['Space_Grotesk'] text-xl">{title}</h3>
+                    {studying ? (
+                        <p className={`${mono.className} flex items-center gap-2 text-sm uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--accent)_55%,white)]`}>
+                            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-(--accent) shadow-[0_0_10px_var(--accent)] motion-safe:animate-pulse" />
+                            {subtitle}
+                        </p>
+                    ) : (
+                        <p className="text-sm text-slate-400">{subtitle}</p>
+                    )}
                 </div>
-                <h3 className="text-xl font-['Space_Grotesk']">{title}</h3>
             </div>
-            <div className="space-y-3">
-                {skills.map((skill, index) => (
-                    <SkillItem
-                        key={index}
-                        name={skill.name}
-                        percentage={skill.percentage}
-                        color={color}
-                    />
+
+            <ul className="relative z-10 flex flex-wrap gap-3">
+                {skills.map((name) => (
+                    <SkillItem key={name} name={name} level={studying ? "studying" : "daily"} />
                 ))}
-            </div>
-        </motion.div>
+            </ul>
+        </motion.section>
     );
 };
 

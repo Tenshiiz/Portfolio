@@ -1,6 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
+"use client";
+
 import { motion } from "framer-motion";
 import React from "react";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import type { Accent } from "../ui/accent";
+import Container from "../ui/Container";
 
 interface ProjectProps {
     title: string;
@@ -9,52 +16,37 @@ interface ProjectProps {
     tech: string[];
     demoLink: string;
     sourceLink: string;
-    color: "cyan" | "purple" | "pink";
+    color: Accent;
 }
 
-const colors = {
-    cyan: {
-        border: 'border-[#00FFFF]/20 hover:border-[#00FFFF]',
-        text: 'text-[#00FFFF]',
-        bg: 'bg-[#00FFFF]/30',
-        hover: 'group-hover:text-[#00FFFF]'
-    },
-    purple: {
-        border: 'border-[#9333EA]/20 hover:border-[#9333EA]',
-        text: 'text-[#9333EA]',
-        bg: 'bg-[#9333EA]/30',
-        hover: 'group-hover:text-[#9333EA]'
-    },
-    pink: {
-        border: 'border-[#E879F9]/20 hover:border-[#E879F9]',
-        text: 'text-[#E879F9]',
-        bg: 'bg-[#E879F9]/30',
-        hover: 'group-hover:text-[#E879F9]'
-    }
-};
-
+/** Cartão de projeto: miniatura, descrição, stack e links de demo e código. */
 const Project = React.memo(({ title, description, imgSrc, tech, demoLink, sourceLink, color }: ProjectProps) => {
     return (
         <motion.div
-            className={`group relative overflow-hidden rounded-lg bg-[#050816] border ${colors[color].border} transition-all duration-500`}
+            data-accent={color}
+            className="group relative overflow-hidden w-full md:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)] rounded-lg bg-space-900 border border-(--accent)/20 hover:border-(--accent) transition-all duration-500"
             whileHover={{ y: -10 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
         >
-            <div className={`absolute inset-0 bg-gradient-to-b from-transparent to-${colors[color].bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-(--accent)/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
             {/* Project Image */}
-            <img
-                src={imgSrc}
-                alt={title}
-                className="w-full h-60 object-cover object-center"
-            />
+            <div className="relative w-full h-60">
+                <Image
+                    src={imgSrc}
+                    alt={title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover object-center"
+                />
+            </div>
 
             {/* Project Details */}
             <div className="p-6">
-                <h3 className={`text-xl font-['Space_Grotesk'] mb-2 ${colors[color].hover} transition-colors duration-300`}>{title}</h3>
+                <h3 className="text-xl font-['Space_Grotesk'] mb-2 group-hover:text-(--accent) transition-colors duration-300">{title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{description}</p>
 
                 {/* Tech Stack */}
@@ -62,7 +54,7 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
                     {tech.map((item, index) => (
                         <span
                             key={index}
-                            className={`px-2 py-1 bg-[#171717]/50 text-xs rounded ${colors[color].text}`}
+                            className="px-2 py-1 bg-[#171717]/50 text-xs rounded text-(--accent)"
                         >
                             {item}
                         </span>
@@ -73,15 +65,15 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
                 <div className="flex justify-between">
                     <a
                         href={demoLink}
-                        className={`${colors[color].text} hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md`}
+                        className="text-(--accent) hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md"
                     >
-                        <i className="fas fa-eye"></i> Ver Demo
+                        <FontAwesomeIcon icon={faEye} /> Ver Demo
                     </a>
                     <a
                         href={sourceLink}
-                        className={`${colors[color].text} hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md`}
+                        className="text-(--accent) hover:text-white hover:bg-white/10 transition-all duration-300 text-sm flex items-center gap-2 px-4 py-2 rounded-md"
                     >
-                        <i className="fab fa-github"></i> Ver Código
+                        <FontAwesomeIcon icon={faGithub} /> Ver Código
                     </a>
                 </div>
             </div>
@@ -91,6 +83,7 @@ const Project = React.memo(({ title, description, imgSrc, tech, demoLink, source
 
 Project.displayName = "Project";
 
+/** Seção #projetos com a grade de cartões. */
 export default function ProjectsSection() {
     const projects: ProjectProps[] = [
         {
@@ -114,8 +107,8 @@ export default function ProjectsSection() {
     ];
 
     return (
-        <section id="projetos" className="py-24 bg-[#030610] relative">
-            <div className="container mx-auto px-6">
+        <section id="projetos" className="py-24 bg-space-950 relative">
+            <Container>
                 <motion.div
                     className="text-center mb-16"
                     initial={{ opacity: 0, y: 20 }}
@@ -124,10 +117,10 @@ export default function ProjectsSection() {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl font-bold mb-2 font-['Space_Grotesk']">
-                        Meus <span className="bg-gradient-to-r from-[#00FFFF] to-[#9333EA] bg-clip-text text-transparent ">Projetos</span>
+                        Meus <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent ">Projetos</span>
                     </h2>
                     <div
-                        className="w-20 h-1 bg-[#00FFFF] mx-auto mb-6 rounded"
+                        className="w-20 h-1 bg-neon-cyan mx-auto mb-6 rounded"
                         style={{ boxShadow: "0 0 5px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)" }}
                     ></div>
                     <p className="text-gray-300 max-w-2xl mx-auto">
@@ -135,7 +128,7 @@ export default function ProjectsSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex flex-wrap justify-center gap-8">
                     {projects.map((project, index) => (
                         <Project
                             key={index}
@@ -152,14 +145,16 @@ export default function ProjectsSection() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <a
-                        href="#"
-                        className="inline-block px-6 py-3 rounded border border-[#9333EA] text-[#9333EA] hover:bg-[#9333EA]/10 transition-all duration-300 font-['Space_Grotesk']"
+                        href="https://github.com/Tenshiiz?tab=repositories"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-6 py-3 rounded border border-neon-purple text-neon-purple hover:bg-neon-purple/10 transition-all duration-300 font-['Space_Grotesk']"
                         style={{ boxShadow: "0 0 5px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3)" }}
                     >
-                        Ver Todos os Projetos <i className="fas fa-arrow-right ml-2"></i>
+                        Ver Todos os Projetos <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
                     </a>
                 </motion.div>
-            </div>
+            </Container>
         </section>
     );
 }

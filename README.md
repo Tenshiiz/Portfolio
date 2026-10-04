@@ -1,35 +1,71 @@
-# 🌟 Meu Portfólio
+<div align="center">
 
-![Captura da tela inicial](./imagens/telaInicial.png)
+<img src="./imagens/banner.svg" alt="Carlos Eduardo, Front-end Developer" width="100%" />
 
-Olá! Bem-vindo ao meu portfólio pessoal. Aqui você encontra uma coleção dos meus projetos em desenvolvimento frontend, onde eu mostro minhas habilidades em criar sites e apps web modernos e funcionais. Prepare-se para uma jornada visual incrível! ✨
+<br />
 
-## 👨‍💻 Sobre Mim
+**Um cantinho escuro, com algumas estrelas, onde guardo o que construo.**
 
-Desenvolvedor frontend focado em criar experiências web que funcionam. Trabalho principalmente com React e Next.js, sempre buscando código limpo e interfaces intuitivas. Apaixonado por transformar ideias em realidade digital! 🚀
+<br />
 
-## 🛠️ Tecnologias
+[![Next.js](https://img.shields.io/badge/Next.js_15-0a0820?style=for-the-badge&logo=next.js&logoColor=E6E1D8)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React_19-0a0820?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-0a0820?style=for-the-badge&logo=typescript&logoColor=3b9eff)](https://www.typescriptlang.org)
+[![Tailwind](https://img.shields.io/badge/Tailwind_4-0a0820?style=for-the-badge&logo=tailwind-css&logoColor=38B2AC)](https://tailwindcss.com)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0a0820?style=for-the-badge&logo=framer&logoColor=e879f9)](https://www.framer.com/motion)
 
-- ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
-- ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-- ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-- ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
-- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white)
+</div>
 
-## 📂 Projetos
+<br />
 
-Este repositório documenta meus projetos em desenvolvimento frontend. Você encontrará desde aplicações completas com autenticação até componentes reutilizáveis e integrações com APIs.
+## O site
 
-## 🌟 Destaques
+Uma página só, pensada como um céu noturno: fundo profundo, partículas à deriva e luz neon em ciano, roxo e rosa. Nada grita; o movimento é lento e respeita quem prefere menos animação.
 
-- **Interfaces Responsivas:** Sites que se adaptam perfeitamente a qualquer dispositivo.
-- **Animações Suaves:** Usando Framer Motion para transições incríveis.
-- **Código Limpo:** Sempre priorizando manutenibilidade e eficiência.
+Do topo ao rodapé:
 
-Sinta-se à vontade para explorar e entrar em contato! Vamos conversar sobre ideias e colaborações. 🤝
+**Início** → **Sobre** → **Habilidades** → **Projetos** → **Contato**
 
-## 📞 Contato
+<br />
 
-[LinkedIn](https://www.linkedin.com/in/carloseduardo2003) | [Email](mailto:carlosvanziler50@gmail.com)
+## Projetos
 
-Desenvolvido por ❤️ Tenshi
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <a href="https://lumen-ashy.vercel.app/"><img src="./public/imgProjects/LumenLogo.png" alt="Lumen" width="100%" /></a>
+      <h3>Lumen</h3>
+      <sub>Next.js · TypeScript · Tailwind CSS</sub>
+      <br /><br />
+      <a href="https://lumen-ashy.vercel.app/">Ver ao vivo</a> &nbsp;·&nbsp; <a href="https://github.com/Tenshiiz/Lumen">Código</a>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <a href="https://youtube-clone-tenshi.vercel.app"><img src="./public/imgProjects/YoutubeClone.png" alt="Clone do YouTube" width="100%" /></a>
+      <h3>Clone do YouTube</h3>
+      <sub>React.js · CSS</sub>
+      <br /><br />
+      <a href="https://youtube-clone-tenshi.vercel.app">Ver ao vivo</a> &nbsp;·&nbsp; <a href="https://github.com/Tenshiiz/Youtube-clone">Código</a>
+    </td>
+  </tr>
+</table>
+
+<br />
+
+## Por dentro
+
+- **Tem teclado e leitor de tela em mente:** menu navegável por teclado, `Esc` fecha e devolve o foco, botões com nome acessível.
+- **Movimento com educação:** Framer Motion obedece ao `prefers-reduced-motion` do sistema.
+- **Testado de verdade:** Playwright confere navegação, links, fontes, imagens e o layout em seis tamanhos de tela, de celular a 1920 px.
+- **Imagens leves:** as capas passam pelo otimizador do Next e há teste para garantir que não pesem demais.
+
+<br />
+
+<div align="center">
+
+## Vamos conversar?
+
+[**LinkedIn**](https://www.linkedin.com/in/carloseduardo2003) &nbsp;·&nbsp; [**GitHub**](https://github.com/Tenshiiz) &nbsp;·&nbsp; [**E-mail**](mailto:carlosvanziler50@gmail.com)
+
+<sub>Feito por Carlos Eduardo</sub>
+
+</div>

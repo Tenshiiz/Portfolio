@@ -8,8 +8,43 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+}
+
+/* Paleta neon e fundos do portfólio: única fonte dos valores hexadecimais. */
+@theme {
+  --color-neon-cyan: #00ffff;
+  --color-neon-purple: #9333ea;
+  --color-neon-pink: #e879f9;
+  --color-space-900: #050816;
+  --color-space-950: #030610;
+}
+
+/*
+ * A cor de destaque de um componente é dado (`data-accent`), não nome de classe.
+ * O Tailwind só gera classes que aparecem inteiras no código, então interpolar
+ * `group-hover:${cor}` nunca produz CSS. Com `--accent` o mesmo className serve
+ * às três cores.
+ */
+@layer base {
+  [data-accent="cyan"] {
+    --accent: var(--color-neon-cyan);
+    --accent-to: var(--color-neon-purple);
+  }
+  [data-accent="purple"] {
+    --accent: var(--color-neon-purple);
+    --accent-to: var(--color-neon-pink);
+  }
+  [data-accent="pink"] {
+    --accent: var(--color-neon-pink);
+    --accent-to: var(--color-neon-purple);
+  }
+}
+
+/* Halo neon na cor de destaque corrente. */
+@utility glow {
+  box-shadow:
+    0 0 5px color-mix(in srgb, var(--accent) 50%, transparent),
+    0 0 20px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 @media (prefers-color-scheme: dark) {
